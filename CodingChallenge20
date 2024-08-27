@@ -1,0 +1,30 @@
+""" Create a program which will convert a given decimal up to 255 into its 8-bit binary equivalent """
+import time
+
+denarynum = int(input("Please insert a number up to 255: "))
+binary = [128, 64., 32, 16, 8, 4, 2, 1]
+binarynum = ""
+while denarynum > 255:
+    print("This number is larger than 255. Please try again in 3 seconds.")
+    denarynum = 254
+    time.sleep(3)
+    denarynum = int(input("Please insert a number up to 255: "))
+converter = str(input("Do you wish to convert the number into its 8-bit binary equivalent? "))
+if converter == "Yes" or converter == "yes":
+    for i in range(len(binary)):
+        if denarynum >= binary[i]:
+            denarynum = denarynum - binary[i]
+            binarynum = 1
+        else:
+            binarynum = 0
+        print(str(binarynum), end="")
+elif converter == "No" or converter == "no":
+    hexnum = str(input("Do you wish to convert the number into a hexadecimal? "))
+    if hexnum == "Yes" or hexnum == "yes":
+        print("Your number will end up as {:X}".format(denarynum))
+    elif hexnum == "No" or "no":
+        print("I have no idea what you are doing. This conversation will abort in 3 secs.")
+        for i in range(3, 0, -1):
+            print(i)
+            time.sleep(1)
+        print("Please restart the code if you want to insert a new number.")
